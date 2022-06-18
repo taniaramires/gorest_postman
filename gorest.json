@@ -49,16 +49,6 @@
 								}
 							],
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "62b68ad92e2c1e1f5a519292ccf33eb1501116e8fe898da4f8ea8aeaf51589ef",
-											"type": "string"
-										}
-									]
-								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -112,16 +102,6 @@
 								}
 							],
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "62b68ad92e2c1e1f5a519292ccf33eb1501116e8fe898da4f8ea8aeaf51589ef",
-											"type": "string"
-										}
-									]
-								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -188,16 +168,6 @@
 								}
 							],
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "62b68ad92e2c1e1f5a519292ccf33eb1501116e8fe898da4f8ea8aeaf51589ef",
-											"type": "string"
-										}
-									]
-								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -248,16 +218,6 @@
 								}
 							],
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "62b68ad92e2c1e1f5a519292ccf33eb1501116e8fe898da4f8ea8aeaf51589ef",
-											"type": "string"
-										}
-									]
-								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -314,16 +274,6 @@
 								}
 							],
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "62b68ad92e2c1e1f5a519292ccf33eb1501116e8fe898da4f8ea8aeaf51589ef",
-											"type": "string"
-										}
-									]
-								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -380,16 +330,6 @@
 								}
 							],
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "62b68ad92e2c1e1f5a519292ccf33eb1501116e8fe898da4f8ea8aeaf51589ef",
-											"type": "string"
-										}
-									]
-								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -970,11 +910,11 @@
 		}
 	],
 	"auth": {
-		"type": "oauth2",
-		"oauth2": [
+		"type": "bearer",
+		"bearer": [
 			{
-				"key": "addTokenTo",
-				"value": "header",
+				"key": "token",
+				"value": "2fb109f1dfbe588fa9b31809005c6f344deaefc4cdcadb1b75af027891e20cbf",
 				"type": "string"
 			}
 		]
@@ -1003,10 +943,6 @@
 		{
 			"key": "userId",
 			"value": ""
-		},
-		{
-			"key": "base_url",
-			"value": "https://gorest.co.in"
 		},
 		{
 			"key": "userName",
