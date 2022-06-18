@@ -23,7 +23,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
       - name: Step 1 - Newman and Node
@@ -37,12 +37,12 @@ jobs:
         
       # Runs a set of commands using the runners shell
       - name: Step 3 - Execute collection
-        run: newman run ./gorest.json -e ./environment.json --reporters cli, -r htmlextra --reporter-htmlextra-export ./results/report.html
+        run: newman run ./gorest.json -e ./environment.json --reporters=cli,htmlextra --reporter-htmlextra-export ./results/report.html
         
 
       # Runs a set of commands using the runners shell
       - name: Step 4 Archive production artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
             name: report
             path: ./results/report.html
