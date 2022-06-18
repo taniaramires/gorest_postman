@@ -37,12 +37,11 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Step 3 - Execute collection
-        run: sudo newman run ./gorest.json -e ./environment.json -r htmlextra --reporter-htmlextra-export ./results/report.html
-                       
+        run: newman run ./gorest.json -e ./environment.json --reporters cli, -r htmlextra --reporter-htmlextra-export ./results/report.html
 
       # Runs a set of commands using the runners shell
       - name: Step 4 - Archive
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: report
           path: ./results/report.html
