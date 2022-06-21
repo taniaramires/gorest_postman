@@ -905,6 +905,152 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Pré-request DELETE",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"pm.test(\"Body response\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData).to.have.property(\"id\");",
+											"    pm.collectionVariables.set(\"userIdDelete\", jsonData.id);  ",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"{{$randomFullName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"gender\": \"male\",\n    \"status\": \"active\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/public/v2/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"public",
+										"v2",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CT001 - Excluir  um usuário com sucesso",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 5000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+											"});",
+											"",
+											"pm.test(\"Body response\", function () {",
+											"    var jsonData = pm.response.text();",
+											"    pm.expect(jsonData.length).to.eq(0);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/public/v2/users/{{userIdDelete}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"public",
+										"v2",
+										"users",
+										"{{userIdDelete}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pós-request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 5000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+											"});",
+											"",
+											"pm.test(\"Body response\", function () {",
+											"    var jsonData = pm.response.json();  ",
+											"    pm.expect(jsonData).to.have.property(\"message\");",
+											"    pm.expect(jsonData.message).to.be.eq(\"Resource not found\");  ",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/public/v2/users/{{userIdDelete}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"public",
+										"v2",
+										"users",
+										"{{userIdDelete}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
@@ -982,6 +1128,10 @@
 		},
 		{
 			"key": "nomePatch",
+			"value": ""
+		},
+		{
+			"key": "userIdDelete",
 			"value": ""
 		}
 	]
