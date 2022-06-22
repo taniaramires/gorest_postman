@@ -30,7 +30,7 @@
 											"pm.test(\"Body response\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    _.each(jsonData, (item) => {",
-											"        pm.expect(item).to.have.property(\"id\");",
+											"        pm.expect(item).to.have.property(\"id2\");",
 											"        pm.expect(item).to.have.property(\"name\");",
 											"        pm.expect(item).to.have.property(\"email\");",
 											"        pm.expect(item).to.have.property(\"gender\");",
