@@ -30,7 +30,7 @@
 											"pm.test(\"Body response\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    _.each(jsonData, (item) => {",
-											"        pm.expect(item).to.have.property(\"id2\");",
+											"        pm.expect(item).to.have.property(\"id\");",
 											"        pm.expect(item).to.have.property(\"name\");",
 											"        pm.expect(item).to.have.property(\"email\");",
 											"        pm.expect(item).to.have.property(\"gender\");",
@@ -1034,6 +1034,49 @@
 							],
 							"request": {
 								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/public/v2/users/{{userIdDelete}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"public",
+										"v2",
+										"users",
+										"{{userIdDelete}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pós-request GET",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 5000ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+											"});",
+											"",
+											"pm.test(\"Body response\", function () {",
+											"    var jsonData = pm.response.json();  ",
+											"    pm.expect(jsonData).to.have.property(\"message\");",
+											"    pm.expect(jsonData.message).to.be.eq(\"Resource not found\");  ",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
 								"header": [],
 								"url": {
 									"raw": "{{base_url}}/public/v2/users/{{userIdDelete}}",
